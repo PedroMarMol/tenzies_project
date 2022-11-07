@@ -1,76 +1,88 @@
-body {
-  background-color: #0b2434;
-  font-family: Helvetica, Arial, sans-serif;
-  padding: 20px;
-  font-family: 'Karla', sans-serif;
-  font-weight: 700;
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-main {
-  height: 400px;
-  max-width: 800px;
-  background-color: whitesmoke;
-  padding: 1rem;
-  margin-inline: auto;
-  border-radius: 5px;
+button { 
+  
+}
+
+body {
+  font-family: 'Karla';
+  margin: 0;
+  background-color: #0B2434;
+}
+
+.main--app {
+  width: 520px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-h1 {
-  font-size: 40px;
-  margin: 0;
-}
-
-p {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  margin-top: 0;
-}
-
-.die-container {
-  display: grid;
-  grid-template: auto auto / repeat(5, 1fr);
-  gap: 20px;
-  margin-bottom: 40px;
-}
-
-.die-face {
-  grid-row: span 1;
-  border-radius: 10px;
-  height: 50px;
-  width: 50px;
-  display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  box-shadow: 0px 3.57447px 3.57447px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5fb;
+  border-radius: 10px;
+  text-align: center;
+  margin: 50px 25px;
 }
 
-.die-num {
-  font-size: 2em;
-  font-weight: lighter;
+.main--header {
+  padding: 20px 0 0 0;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 5px;
 }
 
-.roll-dice {
-  height: 50px;
-  width: 100px;
-  border: none;
-  border-radius: 6px;
+.main--text {
+  margin-top: 0;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: -0.03em;
+  padding: 0;
+  font-size: 20px;
+  color: #4A4E74;
+  width: 350px;
+}
+
+.main--numbers {
+  font-family: 'Karla';
+  width: 72px;
+  height: 72px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  font-size: 38px;
+  font-weight: 700;
+  color: #2B283A;
+}
+
+.selectedNumber {
+  background-color: #59E391;
+  font-family: 'Karla';
+  width: 72px;
+  height: 72px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  font-size: 38px;
+  font-weight: 700;
+  color: #2B283A;
+}
+
+.main--grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 25px;
+}
+
+.main--button {
+  font-family: 'Karla';
+  font-size: 28px;
+  font-weight: 700;
+  width: 185px;
+  height: 72px;
   background-color: #5035FF;
+  box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+  border-radius: 9px;
+  margin: 40px;
   color: white;
-  cursor: pointer;
-  font-size: 1.2rem;
-  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.18);
-}
-
-.roll-dice:active {
-  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
-}
-
-.roll-dice:focus {
-  outline: none;
 }

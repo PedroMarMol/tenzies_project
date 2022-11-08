@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./App.css"
 import Die from "./components/Die"
 
 export default function App() {
     const [isActive, setIsActive] = useState(false)
     const handleClick = (() => setIsActive(current => !current))
-
+    
     const [arrayOfNumbers, setArrayOfNumbers] = useState(allNewDice)
     function allNewDice() {
         const newDice = []
@@ -14,7 +14,9 @@ export default function App() {
         }
         return newDice
     }
-    
+
+    const rollDices = () => setArrayOfNumbers(allNewDice())
+
     const diceNumbers = arrayOfNumbers.map((die) => <Die value={die} />)
     
     return (
@@ -28,7 +30,11 @@ export default function App() {
             <div className='dice--container'>
                 {diceNumbers}
             </div>
-            <button className="main--button">Roll</button>
+            <button 
+                className="main--button"
+                onClick={rollDices}
+                >Roll
+            </button>
         </main>
     )
 }

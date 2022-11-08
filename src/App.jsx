@@ -2,11 +2,27 @@ import React, { useState } from 'react';
 import "./App.css"
 import Die from "./components/Die"
 
+/**
+ * Challenge:
+ * 
+ * Write a function (allNewDice) that returns an array 
+ * of 10 random numbers between 1-6 inclusive.
+ * 
+ * Log the array of numbers to the console for now
+ */
+
 export default function App() {
     const [isActive, setIsActive] = useState(false)
     const handleClick = () => {
       setIsActive(current => !current) 
     } 
+    function allNewDice() {
+        const newDice = []
+        for (let i = 0; i < 10; i++) {
+            newDice.push(Math.ceil(Math.random() * 6))
+        }
+        return newDice
+    }
     return (
         <main className="main--app">
             <p className="main--header">

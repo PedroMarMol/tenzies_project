@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import "./App.css"
-import Die from "./components/Die"
+import './App.css'
+import Die from './components/Die'
+import { nanoid } from 'nanoid'
 
 export default function App() {
     const [isActive, setIsActive] = useState(false)
@@ -12,7 +13,8 @@ export default function App() {
         for (let i = 0; i < 10; i++) {
             newDice.push({
                 value: Math.ceil(Math.random() * 6), 
-                isHeld: false
+                isHeld: false,
+                id: nanoid()
             })
         }
         return newDice
@@ -20,8 +22,16 @@ export default function App() {
 
     const rollDices = () => setArrayOfNumbers(allNewDice())
 
-    const diceNumbers = arrayOfNumbers.map((die) => <Die value={die.value} />)
-    
+    // function holdDice(id) {
+    //     console.log(id)
+    // }
+
+    // handleClick={holdDice(die.id)}
+
+    const diceNumbers = arrayOfNumbers.map(die => (
+        <Die key={die.id} value={die.value} id={die.id}/>
+        ))
+
     return (
         <main className="main--app">
             <p className="main--header">

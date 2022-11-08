@@ -4,6 +4,7 @@ export default function Die(props) {
     const [isActive, setIsActive] = React.useState(false)
     function handleClick() {
         setIsActive(prev => !prev)
+        console.log(props.id)
     }
     return (
         <div>

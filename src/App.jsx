@@ -10,14 +10,17 @@ export default function App() {
     function allNewDice() {
         const newDice = []
         for (let i = 0; i < 10; i++) {
-            newDice.push(Math.ceil(Math.random() * 6))
+            newDice.push({
+                value: Math.ceil(Math.random() * 6), 
+                isHeld: false
+            })
         }
         return newDice
     }
 
     const rollDices = () => setArrayOfNumbers(allNewDice())
 
-    const diceNumbers = arrayOfNumbers.map((die) => <Die value={die} />)
+    const diceNumbers = arrayOfNumbers.map((die) => <Die value={die.value} />)
     
     return (
         <main className="main--app">
@@ -31,7 +34,7 @@ export default function App() {
                 {diceNumbers}
             </div>
             <button 
-                className="main--button"
+                className="roll--dice"
                 onClick={rollDices}
                 >Roll
             </button>

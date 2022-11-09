@@ -7,7 +7,13 @@ export default function App() {
     const [arrayOfNumbers, setArrayOfNumbers] = useState(allNewDice())
     const [tenzies, setTenzies] = useState(false)
     useEffect(() => {
-        console.log("Dice state changed")
+        const allActive = arrayOfNumbers.every(die => die.isActive)
+        const firstValue = arrayOfNumbers[0].value
+        const allSameValue = arrayOfNumbers.every(die => die.value === firstValue)
+        if (allActive && allSameValue) {
+            setTenzies(true)
+            console.log("You won!")
+        }
     }, [arrayOfNumbers])
     
     function allNewDice() {

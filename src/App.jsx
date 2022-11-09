@@ -4,8 +4,12 @@ import Die from './components/Die'
 import { nanoid } from 'nanoid'
 
 export default function App() {
-
-    const [arrayOfNumbers, setArrayOfNumbers] = useState(allNewDice)
+    const [arrayOfNumbers, setArrayOfNumbers] = useState(allNewDice())
+    const [tenzies, setTenzies] = useState(false)
+    useEffect(() => {
+        console.log("Dice state changed")
+    }, [arrayOfNumbers])
+    
     function allNewDice() {
         const newDice = []
         for (let i = 0; i < 10; i++) {

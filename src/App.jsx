@@ -29,13 +29,18 @@ export default function App() {
         return newDice
     }
     
-    const roll = () => {
-        const newArrayOfNumbers = arrayOfNumbers.map(dice => ({
-            ...dice,
-            value: dice.isActive ? dice.value : Math.ceil(Math.random() * 6)
-        }))
-        
-        setArrayOfNumbers(newArrayOfNumbers)
+    const roll = () => { 
+        if (!tenzies) {    
+            const newArrayOfNumbers = arrayOfNumbers.map(dice => ({
+                ...dice,
+                value: dice.isActive ? dice.value : Math.ceil(Math.random() * 6)
+            }))
+            
+            setArrayOfNumbers(newArrayOfNumbers)
+        } else {
+            setTenzies(false)
+            setArrayOfNumbers(allNewDice())
+        }
     }
     
     const handleClick = diceId => {

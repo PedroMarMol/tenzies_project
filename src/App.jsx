@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css'
 import Die from './components/Die'
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti';
 
 export default function App() {
     const [arrayOfNumbers, setArrayOfNumbers] = useState(allNewDice())
@@ -58,6 +59,7 @@ export default function App() {
     
     return (
         <main className="main--app">
+            {tenzies && <Confetti />}
             <p className="main--header">
                 Tenzies
             </p>
@@ -70,7 +72,8 @@ export default function App() {
             <button 
                 className="roll--dice"
                 onClick={roll}
-                >Roll
+            >
+                {tenzies ? "New Game" : "Roll"}
             </button>
         </main>
     )

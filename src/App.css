@@ -10,6 +10,8 @@ body {
   font-family: 'Karla';
   margin: 0;
   background-color: #0B2434;
+  display: flex;
+  justify-content: center;
 }
 
 .main--app {

@@ -4,34 +4,48 @@ import Die from './components/Die'
 import { nanoid } from 'nanoid'
 
 export default function App() {
-    const [isActive, setIsActive] = useState(false)
-    const handleClick = (() => setIsActive(current => !current))
-    
+
     const [arrayOfNumbers, setArrayOfNumbers] = useState(allNewDice)
     function allNewDice() {
         const newDice = []
         for (let i = 0; i < 10; i++) {
             newDice.push({
-                value: Math.ceil(Math.random() * 6), 
-                isHeld: false,
-                id: nanoid()
+                value: Math.ceil(Math.random() * 6),
+                id: nanoid(),
+                isActive: false
             })
         }
         return newDice
     }
-
-    const rollDices = () => setArrayOfNumbers(allNewDice())
-
-    // function holdDice(id) {
-    //     console.log(id)
-    // }
-
-    // handleClick={holdDice(die.id)}
-
+    
+    const roll = () => {
+        const newArrayOfNumbers = arrayOfNumbers.map(dice => ({
+            ...dice,
+            value: dice.isActive ? dice.value : Math.ceil(Math.random() * 6)
+        }))
+        
+        setArrayOfNumbers(newArrayOfNumbers)
+    }
+    
+    const handleClick = diceId => {
+        const newArrayOfNumbers = arrayOfNumbers.map(dice => {
+            if (dice.id !== diceId) {
+                return dice
+            }   else {
+                return ({
+                    ...dice,
+                    isActive: !dice.isActive,
+                })
+            }
+        })
+        
+        setArrayOfNumbers(newArrayOfNumbers)
+    }
+    
     const diceNumbers = arrayOfNumbers.map(die => (
-        <Die key={die.id} value={die.value} id={die.id}/>
-        ))
-
+        <Die key={die.id} value={die.value} isActive={die.isActive} onClick={() => handleClick(die.id)} />
+    ))
+    
     return (
         <main className="main--app">
             <p className="main--header">
@@ -45,7 +59,7 @@ export default function App() {
             </div>
             <button 
                 className="roll--dice"
-                onClick={rollDices}
+                onClick={roll}
                 >Roll
             </button>
         </main>
